@@ -1,14 +1,19 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/boilerplate",
-	"title": "Boilerplate",
-	"category": "widgets",
-	"icon": "smiley",
+	"name": "blocks-course/text-box",
+	"title": "Text Box",
+	"category": "text",
+	"icon": "media-text",
+	"keywords": [
+		"text",
+		"paragraph",
+		"text"
+	],
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "boilerplate",
+	"textdomain": "text-box",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
