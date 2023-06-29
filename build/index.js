@@ -37,7 +37,9 @@ function Edit(_ref) {
   } = _ref;
   const {
     text,
-    alignment
+    alignment,
+    backgroundColor,
+    textColor
   } = attributes;
 
   const onChangeAlignment = newAlignment => {
@@ -52,41 +54,44 @@ function Edit(_ref) {
     });
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color Settings", "text-box"),
+  const onBackgroundColorChange = newBackgroundColor => {
+    setAttributes({
+      backgroundColor: newBackgroundColor
+    });
+  };
+
+  const onTextColorChange = newTextColor => {
+    setAttributes({
+      textColor: newTextColor
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Color Settings', 'text-box'),
     icon: "admin-appearance",
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-    label: "Input Label",
-    value: text,
-    onChange: onChangeText,
-    help: "Help text goes here"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
-    label: "Text Label",
-    value: text,
-    onChange: onChangeText,
-    help: "Help text goes here"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-    label: "Toggle Label",
-    checked: true,
-    onChange: value => console.log(value)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
-    color: '#f03',
-    onChange: value => console.log(value)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
-    colors: [{
-      name: 'red',
-      color: '#f0'
+    initialOpen: true,
+    disableCustomColors: false,
+    colorSettings: [{
+      value: backgroundColor,
+      onChange: onBackgroundColorChange,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", "text-box")
     }, {
-      name: 'black',
-      color: '#000'
-    }],
-    onChange: value => console.log(value)
+      value: textColor,
+      onChange: onTextColorChange,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", "text-box")
+    }]
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ContrastChecker, {
+    textColor: textColor,
+    backgroundColor: backgroundColor
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
     value: alignment,
     onChange: onChangeAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
-    className: `text-box-align-${alignment}`
+    className: `text-box-align-${alignment}`,
+    style: {
+      backgroundColor,
+      color: textColor
+    }
   }), {
     onChange: onChangeText,
     value: text,
@@ -150,10 +155,16 @@ function save(_ref) {
   } = _ref;
   const {
     text,
-    alignment
+    alignment,
+    backgroundColor,
+    textColor
   } = attributes;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: `text-box-align-${alignment}`
+    className: `text-box-align-${alignment}`,
+    style: {
+      backgroundColor,
+      color: textColor
+    }
   }), {
     tagName: "h4",
     value: text
