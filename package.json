@@ -28,7 +28,9 @@
 	"dependencies": {
 		"@wordpress/block-editor": "^8.0.11",
 		"@wordpress/blocks": "^11.1.4",
-		"@wordpress/i18n": "^4.2.4"
+		"@wordpress/components": "^25.1.0",
+		"@wordpress/i18n": "^4.2.4",
+		"react": "^18.2.0"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^9.3.0",
